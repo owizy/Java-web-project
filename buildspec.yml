@@ -7,7 +7,7 @@ phases:
   pre_build:
     commands:
       - echo Logging in to AWS CodeArtifact...
-      - CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain nextwork --domain-owner 239760767932 --region us-east-1 --query authorizationToken --output text`
+      - CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain abc --domain-owner 239760767932 --region us-east-1 --query authorizationToken --output text`
       - export CODEARTIFACT_AUTH_TOKEN
   build:
     commands:
@@ -20,5 +20,7 @@ phases:
       - mvn package -s settings.xml
 artifacts:
   files:
-    - target/*.war
+    - target/nextwork-web-project.war
+    - appspec.yml
+    - scripts/**/*
   discard-paths: no
